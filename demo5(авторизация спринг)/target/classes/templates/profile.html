@@ -1,0 +1,82 @@
+<!-- src/main/resources/templates/profile.html -->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Мой профиль</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/styles.css}">
+</head>
+<body>
+<!-- Включение шапки из отдельного файла -->
+<div th:replace="~{header :: header}"></div>
+
+<div class="profile-container">
+    <div class="form-container">
+        <h2>Мой профиль</h2>
+        <!-- Информация о пользователе, недоступная для редактирования -->
+        <div class="info-row">
+            <label>Логин:</label>
+            <span th:text="${user.LOGIN}"></span>
+        </div>
+        <div class="info-row">
+            <label>Имя:</label>
+            <span th:text="${user.name}"></span>
+        </div>
+        <div class="info-row">
+            <label>ID:</label>
+            <span th:text="${user.ID}"></span>
+        </div>
+        <div class="info-row">
+            <label>Поинты:</label>
+            <span th:text="${user.points}"></span>
+        </div>
+        <div class="info-row">
+            <label>Пол:</label>
+            <span th:text="${user.GENDER}"></span>
+        </div>
+        <!-- Форма для редактирования профиля -->
+        <form action="/updateProfile" method="post" enctype="multipart/form-data">
+            <div class="form-row">
+                <label for="age">Возраст:</label>
+                <input type="number" id="age" name="age" th:value="${user.age}" required min="16" max="140" title="Возраст должен быть в диапазоне от 16 до 140 лет.">
+            </div>
+            <div class="form-row">
+                <label for="status">Статус:</label>
+                <input type="text" id="status" name="status" th:value="${user.status}" maxlength="150" title="Максимальное колличество символов 150">
+            </div>
+            <div class="form-row">
+                <label for="condition">Состояние:</label>
+                <select id="condition" name="condition" th:value="${user.condition}" required>
+                    <option value="работаю">Работаю</option>
+                    <option value="занят">Занят</option>
+                    <option value="в туалете">В туалете</option>
+                    <option value="в душе">В душе</option>
+                    <option value="на балдеже">На балдеже</option>
+                    <option value="грустный">Грустный</option>
+                    <option value="злой">Злой</option>
+                    <option value="плачу">Плачу</option>
+                    <option value="все сложно">Все сложно</option>
+                    <option value="на рыбалке">На рыбалке</option>
+                    <option value="учусь">Учусь</option>
+                    <option value="сплю">Сплю</option>
+                </select>
+            </div>
+            <div class="form-row">
+                <label for="password">Пароль:</label>
+                <input type="password" id="password" name="password" th:value="${user.PASSWORD}" required minlength="7" pattern="^[A-Za-z0-9_-]+$" title="Пароль должен содержать не менее 7 символов. Разрешены английские буквы, цифры, дефисы и подчеркивания.">
+            </div>
+            <div class="form-row">
+                <label for="photo">Фотография:</label>
+                <input type="file" id="photo" name="photo" accept="image/*" title="Фотография не больше 6МБ">
+            </div>
+            <button type="submit">Сохранить изменения</button>
+        </form>
+        <!-- Блок для отображения сообщений об ошибках -->
+        <div class="error-message" th:if="${error}" th:text="${error}"></div>
+    </div>
+    <!-- Блок для отображения фотографии -->
+    <div class="photo-container" th:if="${user.userFoto != 0}">
+        <img th:src="@{'/profile/photo/' + ${user.userFoto}}" alt="Фото профиля">
+    </div>
+</div>
+</body>
+</html>

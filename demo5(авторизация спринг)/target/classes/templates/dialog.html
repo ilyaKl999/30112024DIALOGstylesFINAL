@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Диалог</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/styles.css}">
+</head>
+<body>
+<!-- Включение шапки из отдельного файла -->
+<div th:replace="~{header :: header}"></div>
+
+<div class="dialog-container">
+    <h2>Диалог ID: <span th:text="${dialog.ID}"></span></h2>
+    <h3>Участники: <span th:text="${dialog.participantsNames}"></span></h3>
+    <div class="messages">
+        <div th:each="message : ${dialog.messages}" class="message">
+            <p><strong>Отправитель:</strong> <span th:text="${message.SENDER}"></span></p>
+            <p><strong>Сообщение:</strong> <span th:text="${message.text}"></span></p>
+            <p><strong>Время:</strong> <span th:text="${message.formattedDate}"></span></p>
+        </div>
+    </div>
+    <form action="/dialog/sendMessage" method="post" class="send-message">
+        <input type="hidden" name="dialogId" th:value="${dialog.ID}">
+        <textarea name="messageText" placeholder="Введите сообщение"></textarea>
+        <button type="submit">Отправить</button>
+    </form>
+</div>
+</body>
+</html>

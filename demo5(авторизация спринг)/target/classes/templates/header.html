@@ -1,0 +1,21 @@
+<!-- src/main/resources/templates/header.html -->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/styles.css}">
+</head>
+<body>
+<div class="header" th:fragment="header">
+    <div class="header-links">
+        <a href="/home">Главная</a>
+        <a href="/dialogs">Диалоги</a>
+        <a href="/forum">Форум</a>
+        <a href="/profile">Мой профиль</a>
+        <a href="/support">Поддержка</a>
+    </div>
+    <div class="header-logout">
+        <a href="/logout">Выход</a>
+    </div>
+</div>
+</body>
+</html>

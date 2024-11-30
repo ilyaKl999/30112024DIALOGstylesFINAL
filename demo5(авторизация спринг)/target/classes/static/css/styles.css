@@ -1,0 +1,286 @@
+/* Общие стили */
+body {
+    background-color: #121212;
+    color: #ffffff;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Стили для шапки */
+.header {
+    background-color: #1e1e1e;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+}
+
+.header-links a {
+    color: #4caf50;
+    text-decoration: none;
+    margin-left: 20px;
+}
+
+.header-links a:hover {
+    text-decoration: underline;
+}
+
+.header-logout a {
+    background-color: #1976d2;
+    color: #ffffff;
+    padding: 5px 10px;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.header-logout a:hover {
+    background-color: #ff5252;
+    color: #ffffff;
+}
+
+/* Стили для профиля */
+.profile-container {
+    background-color: #1e1e1e;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    width: 600px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.profile-container h2 {
+    margin-bottom: 20px;
+}
+
+.profile-container .form-container {
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+}
+
+.profile-container .form-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.profile-container .form-row label {
+    width: 45%;
+    text-align: left;
+}
+
+.profile-container .form-row input[type="text"],
+.profile-container .form-row input[type="password"],
+.profile-container .form-row input[type="number"],
+.profile-container .form-row textarea,
+.profile-container .form-row select {
+    width: 45%;
+    padding: 10px;
+    border: 1px solid #333;
+    border-radius: 4px;
+    background-color: #2e2e2e;
+    color: #ffffff;
+}
+
+.profile-container button {
+    padding: 10px;
+    background-color: #1976d2;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+.profile-container button:hover {
+    background-color: #1565c0;
+}
+
+.profile-container .error-message {
+    color: red;
+    margin-top: 10px;
+}
+
+.profile-container .photo-container {
+    width: 35%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.profile-container .photo-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 0;
+}
+
+.profile-container .info-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.profile-container .info-row label {
+    width: 45%;
+    text-align: left;
+}
+
+.profile-container .info-row span {
+    width: 45%;
+    text-align: right;
+}
+
+/* Стили для диалогов */
+.dialogs-container {
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #1e1e1e;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.dialogs-container h2 {
+    margin: 10px 0;
+}
+
+.create-dialog {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.create-dialog input[type="text"] {
+    width: 70%;
+    padding: 10px;
+    border: 1px solid #333;
+    border-radius: 4px;
+    background-color: #2e2e2e;
+    color: #ffffff;
+}
+
+.create-dialog button {
+    padding: 10px 20px;
+    background-color: #1976d2;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.create-dialog button:hover {
+    background-color: #1565c0;
+}
+
+.error-message {
+    color: red;
+    margin-top: 10px;
+}
+
+.dialog {
+    width: 100%;
+    padding: 10px;
+    border-radius: 8px;
+    background-color: #333;
+    margin-bottom: 10px;
+    transition: background-color 0.3s;
+}
+
+.dialog:hover {
+    background-color: #444;
+}
+
+.dialog a {
+    text-decoration: none;
+    color: #ffffff;
+    display: block;
+}
+
+.dialog p {
+    margin: 5px 0;
+}
+
+/* Стили для страницы диалога */
+.dialog-container {
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #1e1e1e;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.dialog-container h2, .dialog-container h3 {
+    margin: 10px 0;
+}
+
+.messages {
+    width: 100%;
+    max-height: 400px;
+    overflow-y: auto;
+    border: 1px solid #333;
+    border-radius: 8px;
+    padding: 10px;
+    background-color: #2e2e2e;
+    margin-bottom: 20px;
+}
+
+.message {
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 8px;
+    background-color: #333;
+}
+
+.message p {
+    margin: 5px 0;
+}
+
+.send-message {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.send-message textarea {
+    width: 80%;
+    padding: 10px;
+    border: 1px solid #333;
+    border-radius: 4px;
+    background-color: #2e2e2e;
+    color: #ffffff;
+    resize: none;
+}
+
+.send-message button {
+    padding: 10px 20px;
+    background-color: #1976d2;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.send-message button:hover {
+    background-color: #1565c0;
+}

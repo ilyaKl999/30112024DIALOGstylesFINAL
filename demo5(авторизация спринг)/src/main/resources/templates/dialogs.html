@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Диалоги</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/styles.css}">
+</head>
+<body>
+<!-- Включение шапки из отдельного файла -->
+<div th:replace="~{header :: header}"></div>
+
+<div class="dialogs-container">
+    <h2>Ваши диалоги</h2>
+    <form action="/createDialog" method="post" class="create-dialog">
+        <input type="text" id="searchUser" name="userName" placeholder="Поиск пользователя по имени">
+        <button type="submit">Создать диалог</button>
+    </form>
+    <!-- Блок для отображения сообщений об ошибках -->
+    <div class="error-message" th:if="${error}" th:text="${error}"></div>
+    <div th:each="dialog : ${dialogs}" class="dialog">
+        <a th:href="@{/dialog(id=${dialog.ID})}">
+            <p>ID диалога: <span th:text="${dialog.ID}"></span></p>
+            <p>Участники: <span th:text="${dialog.participantsNames}"></span></p>
+        </a>
+        <!-- Здесь можно добавить дополнительные поля диалога -->
+    </div>
+</div>
+</body>
+</html>

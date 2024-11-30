@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Login</title>
+    <style>
+        body {
+            background-color: #121212;
+            color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        .login-container {
+            background-color: #1e1e1e;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            width: 300px;
+            text-align: center;
+        }
+        .login-container h1 {
+            margin-bottom: 20px;
+        }
+        .login-container input[type="text"],
+        .login-container input[type="password"] {
+            width: 90%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #333;
+            border-radius: 4px;
+            background-color: #2e2e2e;
+            color: #ffffff;
+        }
+        .login-container button {
+            width: 100%;
+            padding: 10px;
+            margin-top: 20px;
+            border: none;
+            border-radius: 4px;
+            background-color: #1976d2;
+            color: #ffffff;
+            cursor: pointer;
+        }
+        .login-container button:hover {
+            background-color: #1565c0;
+        }
+        .login-container p {
+            margin-top: 20px;
+        }
+        .login-container a {
+            color: #1976d2;
+            text-decoration: none;
+        }
+        .login-container a:hover {
+            text-decoration: underline;
+        }
+        .error {
+            color: #ff5252;
+        }
+        .success {
+            color: #4caf50;
+        }
+    </style>
+</head>
+<body>
+<div class="login-container">
+    <h1>Авторизация</h1>
+    <form method="post" action="/login">
+        <input type="text" id="username" name="username" placeholder="Логин" required minlength="4" pattern="^[A-Za-z0-9_-]+$" title="Логин должен содержать не менее 4 символов. Разрешены английские буквы, цифры, дефисы и подчеркивания.">
+        <input type="password" id="password" name="password" placeholder="Пароль" required minlength="4" pattern="^[A-Za-z0-9_-]+$" title="Пароль должен содержать не менее 4 символов. Разрешены английские буквы, цифры, дефисы и подчеркивания.">
+        <button type="submit">Войти!</button>
+    </form>
+    <p th:if="${error}" class="error" th:text="${error}"></p>
+    <p th:if="${success}" class="success" th:text="${success}"></p>
+    <p>У Вас нет аккаунта? <a href="/register">Зарегистрируйся</a></p>
+</div>
+</body>
+</html>

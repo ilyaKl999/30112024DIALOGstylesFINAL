@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Register</title>
+    <style>
+        body {
+            background-color: #121212;
+            color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        .register-container {
+            background-color: #1e1e1e;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            width: 300px;
+            text-align: center;
+        }
+        .register-container h1 {
+            margin-bottom: 20px;
+        }
+        .register-container input[type="text"],
+        .register-container input[type="password"],
+        .register-container input[type="number"],
+        .register-container select {
+            width: 90%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #333;
+            border-radius: 4px;
+            background-color: #2e2e2e;
+            color: #ffffff;
+        }
+        .register-container button {
+            width: 100%;
+            padding: 10px;
+            margin-top: 20px;
+            border: none;
+            border-radius: 4px;
+            background-color: #1976d2;
+            color: #ffffff;
+            cursor: pointer;
+        }
+        .register-container button:hover {
+            background-color: #1565c0;
+        }
+        .register-container p {
+            margin-top: 20px;
+        }
+        .register-container a {
+            color: #1976d2;
+            text-decoration: none;
+        }
+        .register-container a:hover {
+            text-decoration: underline;
+        }
+        .error {
+            color: #ff5252;
+        }
+    </style>
+</head>
+<body>
+<div class="register-container">
+    <h1>Регистрация</h1>
+    <form method="post" action="/register">
+        <input type="text" id="username" name="username" placeholder="Логин(только для входа)" required minlength="7" pattern="^[A-Za-z0-9_-]+$" title="Логин должен содержать не менее 7 символов. Разрешены английские буквы, цифры, дефисы и подчеркивания.">
+        <input type="password" id="password" name="password" placeholder="Пароль" required minlength="7" pattern="^[A-Za-z0-9_-]+$" title="Пароль должен содержать не менее 7 символов. Разрешены английские буквы, цифры, дефисы и подчеркивания.">
+        <input type="text" id="name" name="name" placeholder="Уникальный Ник (Виден всем)" required minlength="5" pattern="^[A-Za-z0-9]+$" title="Ник должен содержать не менее 5 символов. Разрешены только английские буквы и цифры.">
+        <input type="number" id="age" name="age" placeholder="Возраст" required min="16" max="140" title="Возраст должен быть в диапазоне от 16 до 140 лет.">
+        <select id="gender" name="gender" required title="Выберите пол.">
+            <option value="male">Муж</option>
+            <option value="female">Жен</option>
+        </select>
+        <button type="submit">Зарегистрироваться</button>
+        <p>Вернуться к <a href="/login">Авторизации</a></p>
+    </form>
+    <p th:if="${error}" class="error" th:text="${error}"></p>
+</div>
+</body>
+</html>

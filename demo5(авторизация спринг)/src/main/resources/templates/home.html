@@ -1,0 +1,17 @@
+<!-- src/main/resources/templates/home.html -->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Home</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/styles.css}">
+</head>
+<body>
+<!-- Включение шапки из отдельного файла -->
+<div th:replace="~{header :: header}"></div>
+
+<div class="home-container">
+    <p>Вы успешно авторизованы.</p>
+    <h1>Добро пожаловать, <span th:text="${username}"></span>!</h1>
+</div>
+</body>
+</html>
